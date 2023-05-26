@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const PORT = process.env.PORT || 3006;
+const sequelize = require('./config/connection');
 
 const app = express();
 const router = require("./controllers/index");
@@ -23,6 +24,16 @@ app.use((req, res) => {
   res.send("Replace me with 404 page.");
 });
 
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT} at http://localhost:${PORT}`);
-});
+
+(async () => {
+  try {
+    await sequelize.sync({ force: false });
+    app.listen(PORT, () => {
+      console.log(
+        `Server listening on port ${PORT} at http://localhost:${PORT}`
+      );
+    });
+  } catch (err) {
+    console.log(`Error connecting to the database: ${err}`);
+  }
+})();
