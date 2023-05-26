@@ -24,6 +24,8 @@ app.use((req, res) => {
   res.send("Replace me with 404 page.");
 });
 
+//! ---- Only added here to sync models to db while no routes are in use. delete once routes are made
+const { User, Post, Comment, Pet } = require('./models');
 
 (async () => {
   try {
