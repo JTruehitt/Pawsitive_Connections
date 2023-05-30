@@ -40,7 +40,7 @@ router.get("/view-all/:id", async (req, res) => {
     if (!petData) {
       res
         .status(404)
-        .json({ message: `No pets assoiciated with user ${req.params.id}` });
+        .json({ message: `No pets associated with user ${req.params.id}` });
       return;
     }
 
