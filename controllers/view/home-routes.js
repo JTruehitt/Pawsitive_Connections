@@ -40,7 +40,7 @@ router.get("/login", async (req, res) => {
       res.redirect("/dashbaord");
       return;
     }
-    req.render("login");
+    req.status(200).render("login");
   } catch (err) {
     console.log(err);
     res
@@ -90,10 +90,7 @@ router.get("/community-post/:id", async (req, res) => {
 
     const post = postData.get({ plain: true });
 
-    let usersPost;
-    post.user_id === req.session.user_id
-      ? (usersPost = true)
-      : (usersPost = false);
+    const usersPost = post.user_id === req.session.user_id ? true : false;
 
     res.status(200).render("viewcommunitypost", {
       post,
@@ -114,31 +111,42 @@ router.get("/community-post/:id", async (req, res) => {
 // @access private
 router.get("/new-community-post", async (req, res) => {
   try {
-    res.status(200).render("newcommunitypost");
+    res
+      .status(200)
+      .render("newcommunitypost", { loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
-    res
-      .status(500)
-      .json({
-        message: `Error loading new post form. Please try again later.`,
-      });
+    res.status(500).json({
+      message: `Error loading new post form. Please try again later.`,
+    });
   }
 });
 
 // @desc get edit post homepage
 // route GET /edit-community-post/:id
 // @access private, single user
-router.get('/edit-community-post', async (req, res) => {
+router.get("/edit-community-post/:id", async (req, res) => {
   try {
-    res.status(200).render('editcommunitypost');
+    const postData = await Post.findByPk(req.params.id);
+
+    if (!postData) {
+      res.status(400).json({
+        message: `Error loading post with id ${req.params.id}. Please try again later.`,
+      });
+      return;
+    }
+
+    const post = postData.get({ plain: true });
+
+    res
+      .status(200)
+      .render("editcommunitypost", { post, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
-    res
-      .status(500)
-      .json({
-        message: `Error loading edit post form. Please try again later.`,
-      });
+    res.status(500).json({
+      message: `Error loading edit post form. Please try again later.`,
+    });
   }
-})
+});
 
 module.exports = router;
