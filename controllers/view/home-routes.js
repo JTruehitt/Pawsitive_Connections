@@ -37,7 +37,7 @@ router.get("/", async (req, res) => {
 router.get("/login", async (req, res) => {
   try {
     if (req.session.loggedIn) {
-      res.redirect("/dashbaord");
+      res.redirect("/dashboard");
       return;
     }
     req.status(200).render("login");
