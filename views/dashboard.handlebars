@@ -1,1 +1,13 @@
 <h1>Dashboard</h1>
+{{!-- If adoption and whiskerplace `posts` are an array of post objects --}}
+{{#each posts}}
+  <div class="post">
+    <h2>{{title}}</h2>
+    <p>{{content}}</p>
+    <p>Posted by {{author}} on {{format_date createdAt}}</p>
+  </div>
+{{/each}}
+  <p>
+    <button class="btn btn-primary">Post</button>
+  </p>
+</div>
