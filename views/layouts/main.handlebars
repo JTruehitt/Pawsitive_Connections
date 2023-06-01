@@ -22,7 +22,9 @@
           <li>Home</li>
           <li>About Us</li>
           <li>Whiskerplace</li>
-          <li>Sign-Up</li>
+          {{#if logged_in}}
+          <button class="signUpBtn" id="SignUpBtn">Sign-Up</button>
+          {{else}}
         </ul>
       </div>
     </header>
@@ -31,7 +33,10 @@
         <div class="info">
           <h2>Welcome to Pawsitive Connections</h2>
           <p>A community where furry friends come together to wag, purr, and pounce their way into your heart.</p>
-          <button>Login</button>
+          
+          {{#if logged_in}}
+          <button class= "loginBtn" id="login">Login</button>
+          {{else}}
         </div>
         <div class="logo">
           <img src="./public/assets/dynamic duo.jpg" width="100%" height ="100%" alt="cat and dog talking">
@@ -42,6 +47,9 @@
     
     {{{ body }}}
 
-<script src="/js/main.js"></script>
+{{#if logged_in}}
+<script src="/js/main.js">
+</script>
+{{/if}}
 </body>
 </html>
