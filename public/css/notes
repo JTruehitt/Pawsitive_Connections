@@ -1,2 +1,8 @@
 Pawsitive Connections</h1>  
        <p> Welcome to "Pawsitive Connections" 🐾 A community where furry friends come together to wag, purr, and pounce their way into your heart. Whether you're a proud pawrent, a whisker enthusiast, or simply someone who can't resist the charm of a wet nose, this is the ultimate destination for all pet lovers to fetch a ton of fun and share tails of joy. Unleash your creativity, scratch that social itch, and join our pawsome pack as we embark on a fur-tastic adventure, where every pet is a superstar. Let's put our best paw forward and make this place the cat's pajamas! 🐶😺  </p>
+
+       {{#if logged_in}}
+          <button class= "LogoutBtn" id="logout">Login</button>
+          {{else}}
+          <button class= "loginBtn" id="login">Login</button>
+          {{/if}}
