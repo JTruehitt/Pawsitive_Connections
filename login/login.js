@@ -26,10 +26,10 @@ loginBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
   const first_name = document.getElementById("first_name");
-  const last_name = document.getElementById("last_name");
-  const user_name = document.getElementById("user_name");
-  const email = document.getElementById("email");
-  const password = document.getElementById("password");
+  const last_name = document.getElementById("last_name").value.trim();
+  const user_name = document.getElementById("user_name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
 
   fetch("/api/user/signup", {
     method: "post",
