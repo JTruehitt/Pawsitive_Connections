@@ -1,5 +1,40 @@
 body {
-    background-color: rgb(60, 131, 181);
-    color: white;
-    font-family: 'Love Ya Like A Sister', cursive;
+  background-color: rgb(60, 131, 181);
+  color: white;
+  font-family: "Love Ya Like A Sister", cursive;
 }
+
+.profile_img {
+  width: clamp(50px, 10vw, 75px);
+  height: clamp(50px, 10vw, 75px);
+}
+
+.avatar_container {
+  display: flex;
+  flex-wrap: wrap;
+  padding-block: 1em;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.form_container {
+  margin: 0 auto;
+  max-width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#petForm {
+  max-inline-size: 400px;
+  padding-inline: 4em;
+  padding-block: 2em;
+  border: 2px solid yellow;
+}
+
+#petForm > * {
+    display: flex;
+    flex-direction: column;
+    margin-block-end: .5em;
+}
+

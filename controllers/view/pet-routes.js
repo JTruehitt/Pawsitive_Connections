@@ -62,7 +62,7 @@ router.get("/view-all/:id", async (req, res) => {
 // @access private
 router.get("/add-pet", async (req, res) => {
   try {
-    res.status(200).render("addpet", { loggedIn: req.session.loggedIn });
+    res.status(200).render("add-pet", { loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json({

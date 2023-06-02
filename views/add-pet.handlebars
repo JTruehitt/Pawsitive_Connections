@@ -1,0 +1,154 @@
+    <div class="form_container">
+      <h1>Pet Intake Form</h1>
+        <form id="petForm">
+          <div class="formSection">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div>
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" />
+          </div>
+          <div>
+            <label for="type">Type:</label>
+            <input type="text" id="type" name="type" />
+          </div>
+          <div>
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </div>
+          <div>
+            <label for="description">Description:</label>
+            <textarea id="description" name="description"></textarea>
+          </div>
+          <div>
+              <div>
+                <label for="needsHome">Needs a Home?</label>
+                <input type="checkbox" id="needsHome" name="needsHome" />
+              </div>
+              <div>
+                <label for="goodWithKids">Good with Kids:</label>
+                <input type="checkbox" id="goodWithKids" name="goodWithKids" />
+              </div>
+          </div>
+          <div>
+            <label for="image">Avatar:</label>
+            <div class="avatar_container">
+                <label for="profilePicture1">
+                  <input
+                    type="radio"
+                    name="image"
+                    id="profilePicture1"
+                    value="/assets/profile_images/cat1.png"
+                  />
+                  <img
+                    src="/assets/profile_images/cat1.png"
+                    alt="Icon 1"
+                    class="profile_img"
+                  />
+                </label>
+                <label for="profilePicture2">
+                  <input
+                    type="radio"
+                    name="image"
+                    id="profilePicture2"
+                    value="/assets/profile_images/cat2.png"
+                  />
+                  <img
+                    src="/assets/profile_images/cat2.png"
+                    alt="Icon 2"
+                    class="profile_img"
+                  />
+                </label>
+                <label for="profilePicture3">
+                  <input
+                    type="radio"
+                    name="image"
+                    id="profilePicture3"
+                    value="/assets/profile_images/cat3.png"
+                  />
+                  <img
+                    src="/assets/profile_images/cat3.png"
+                    alt="Icon 3"
+                    class="profile_img"
+                  />
+                </label>
+                <label for="profilePicture4">
+                  <input
+                    type="radio"
+                    name="image"
+                    id="profilePicture4"
+                    value="/assets/profile_images/cat4.png"
+                  />
+                  <img
+                    src="/assets/profile_images/cat4.png"
+                    alt="Icon 4"
+                    class="profile_img"
+                  />
+                </label>
+                <label for="profilePicture5">
+                  <input
+                    type="radio"
+                    name="image"
+                    id="profilePicture5"
+                    value="/assets/profile_images/dog1.png"
+                  />
+                  <img
+                    src="/assets/profile_images/dog1.png"
+                    alt="Icon 5"
+                    class="profile_img"
+                  />
+                </label>
+                <label for="profilePicture6">
+                  <input
+                    type="radio"
+                    name="image"
+                    id="profilePicture6"
+                    value="/assets/profile_images/dog2.png"
+                  />
+                  <img
+                    src="/assets/profile_images/dog2.png"
+                    alt="Icon 6"
+                    class="profile_img"
+                  />
+                </label>
+                <label for="profilePicture7">
+                  <input
+                    type="radio"
+                    name="image"
+                    id="profilePicture7"
+                    value="/assets/profile_images/dog3.png"
+                  />
+                  <img
+                    src="/assets/profile_images/dog3.png"
+                    alt="Icon 7"
+                    class="profile_img"
+                  />
+                </label>
+                <label for="profilePicture8">
+                  <input
+                    type="radio"
+                    name="image"
+                    id="profilePicture8"
+                    value="/assets/profile_images/dog4.png"
+                  />
+                  <img
+                    src="/assets/profile_images/dog4.png"
+                    alt="Icon 8"
+                    class="profile_img"
+                  />
+                </label>
+                
+          </div>
+          <div class="form_container">
+            <button type="submit">Add Pet</button>
+          </div>
+        </form>
+    </div>
+
+{{#if loggedIn}}
+    <script src="/js/addpet.js"></script>
+    {{/if}}
