@@ -15,13 +15,35 @@
   </head>
 
   <body>
-    <div class="sidebar">
-      <div class="profile">
-        <img src="./temp_img.jpg" />
-        <h3>User name</h3>
-        <p>Looking for a loving cat!</p>
-        <p>I have a dog who is friendly with both cats and dogs.</p>
-        <p
+    <div class="row">
+      <div class="left-column">
+        <div class="card">
+          <img class="profile-pic" src="./temp_img.jpg" />
+          <h3>Users name</h3>
+          <ul>
+            <li>Looking for a loving cat!</li>
+            <li>I have a dog who is friendly with both cats and dogs.</li>
+            <li>We love to hang out and go for walks at blanchard</li>
+          </ul>
+          <img class="pet-friends" src="./pet-1.avif" />
+          <img class="pet-friends" src="./pet-2.avif" />
+          <img class="pet-friends" src="./pet-3.avif" />
+          <img class="pet-friends" src="./pet-4.avif" />
+        </div>
+      </div>
+      <div class="right-column">
+        <div class="card make-post">
+          <h2>Make a new post!</h2>
+          <input
+            type="text"
+            id="new-user-post"
+            placeholder="What's on your mind?"
+          />
+          <button class="btn" id="post-btn">Post</button>
+        </div>
+        <div class="card">
+          <h3>Popular Posts</h3>
+        </div>
       </div>
     </div>
   </body>

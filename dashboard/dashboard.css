@@ -1,15 +1,92 @@
-.sidebar {
-  background: rgb(84, 167, 219);
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 225px;
-  height: 100%;
-  padding: 20px 0;
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900");
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Love Ya Like A Sister", cursive;
+  padding: 20px;
+  background: #b8e7e1;
+}
+.profile-pic {
+  height: 30%;
+  width: 30%;
+  border-radius: 50%;
+  padding-top: 45px;
+  padding-bottom: 25px;
+}
+li {
+  list-style-type: none;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+ul li::before {
+  content: "🐾          ";
+}
+.pet-friends {
+  height: 15%;
+  width: 15%;
+  border-radius: 60%;
+}
+
+.left-column {
+  float: left;
+  width: 25%;
   text-align: center;
 }
-img {
-  height: 50%;
-  width: 50%;
-  border-radius: 50%;
+
+.right-column {
+  float: left;
+  width: 73%;
+  padding-left: 15px;
+}
+
+.card {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+input {
+  height: 35px;
+  text-align: center;
+}
+input:focus {
+  width: 500px;
+  height: 50px;
+}
+.btn {
+  border-radius: 4px;
+  height: 35px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 200ms linear;
+  padding: 0 30px;
+  letter-spacing: 1px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: none;
+  background-color: rgb(197, 192, 192);
+  color: #15133c;
+  box-shadow: 0 8px 24px 0 rgba(18, 248, 173, 0.2);
+}
+.btn:active,
+.btn:focus {
+  background-color: #ec994b;
+  color: #15133c;
+  box-shadow: 0 8px 24px 0 rgba(255, 255, 255, 0.2);
+}
+.btn:hover {
+  background-color: #73777b;
+  color: #ec994b;
+  box-shadow: 0 8px 24px 0 rgba(255, 255, 255, 0.2);
+}
+
+@media screen and (max-width: 800px) {
+  .left-column,
+  .right-column {
+    width: 100%;
+    padding: 0;
+  }
 }
