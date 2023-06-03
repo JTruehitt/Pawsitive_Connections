@@ -6,3 +6,10 @@ Pawsitive Connections</h1>
           {{else}}
           <button class= "loginBtn" id="login">Login</button>
           {{/if}}
+
+          <ul class="nav">
+            <li><a href="/home">Home</a></li>
+            <li><a href="/aboutus">About Us</a></li>
+            <li><a href="/whiskerplace">Whiskerplace</a></li>
+            <li><a href="Sign-Up"></a></li>
+          </ul>

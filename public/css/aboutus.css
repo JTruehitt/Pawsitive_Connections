@@ -8,11 +8,11 @@ body {
 a {
   text-decoration: none;
 }
-ul {
+/* ul {
   list-style: none;
   padding: 0;
   margin: 0;
-}
+} */
 .container {
   padding-left: 15px;
   padding-right: 15px;
@@ -41,10 +41,10 @@ ul {
 /* End Global Rules */
 
 /* Start Landing Page */
-.landing-page header {
+/* .landing-page header {
   min-height: 80px;
   display: flex;
-}
+} */
 @media (max-width: 767px) {
   .landing-page header {
     min-height: auto;
