@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { Pet } = require("../../models");
 
 // @desc new pet
-// route POST api/pets/
+// route POST /api/pets/
 // @access private
 router.post("/", async (req, res) => {
   try {
