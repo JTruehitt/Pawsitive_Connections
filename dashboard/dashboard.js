@@ -1,5 +1,6 @@
 const postBtn = document.getElementById("post-btn");
 
+//Event listener for the post button
 postBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
