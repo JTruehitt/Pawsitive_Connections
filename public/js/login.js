@@ -3,9 +3,10 @@ const loginBtn = document.getElementById("login-btn");
 loginBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
-  const user_name = getElementById("user_name").value.trim();
-  const password = getElementById("password").value.trim();
-
+  const user_name = document.getElementById("user_name").value.trim();
+  const password = document.getElementById("password").value.trim();
+  console.log(user_name);
+  console.log(password);
   if (user_name === "" && password === "") {
     console.log("Youre logged in!");
   }
@@ -16,20 +17,22 @@ loginBtn.addEventListener("click", (e) => {
   }).then((data) => {
     if (data.ok) {
       location.assign("/dashboard");
-    } else alert("User not found. Please try again.");
+    } else {
+      alert("User not found. Please try again.");
+    }
   });
 });
 
 const signupBtn = document.getElementById("signup-btn");
 
-loginBtn.addEventListener("click", (e) => {
+signupBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
-  const first_name = document.getElementById("first_name");
+  const first_name = document.getElementById("first_name").value.trim();
   const last_name = document.getElementById("last_name").value.trim();
-  const user_name = document.getElementById("user_name").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("password").value.trim();
+  const user_name = document.getElementById("new_user_name").value.trim();
+  const email = document.getElementById("new_email").value.trim();
+  const password = document.getElementById("new_password").value.trim();
 
   fetch("/api/user/signup", {
     method: "post",
@@ -46,7 +49,7 @@ loginBtn.addEventListener("click", (e) => {
       location.assign("/dashboard");
     } else
       alert(
-        "Error creating an acount with the information provided. Please check your input and try again."
+        "Error creating an account with the information provided. Please check your input and try again."
       );
   });
 });

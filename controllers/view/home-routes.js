@@ -40,7 +40,7 @@ router.get("/login", async (req, res) => {
       res.redirect("/dashboard");
       return;
     }
-    req.status(200).render("login");
+    res.status(200).render("login");
   } catch (err) {
     console.log(err);
     res
