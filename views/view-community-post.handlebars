@@ -1,0 +1,64 @@
+<div class="card">
+  <div class="card-header post-header">
+    <h3 class="text-center">{{post.title}}</h5>
+    
+  </div>
+  <div class="post-info">
+    <img src="{{#if post.user.pets.[0]}}{{post.user.pets.[0].image}}{{else}}/assets/profile_images/cat1.png{{/if}}" alt="">
+    
+    <div class="card-body">
+      <p class="date-text">Posted by
+        {{post.user.user_name}}
+        on
+        {{format_date post.createdAt}}</p>
+      <p class="card-text">{{post.body}}</p>
+    </div>
+  </div>
+  <div class="card-body">
+    <form class="form comment-submit">
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="What do you think?"
+          id="comment-message"
+        />
+        <button
+          class="commentSubmitBtn"
+          type="submit"
+          data-postid="{{post.id}}"
+        >Add Comment</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="comment-section">
+  <h3 class="">Comments:</h3>
+  <div class="comment-container">
+    {{#if post.comments}}
+      {{#each post.comments as |comment|}}
+        <div class="card">
+    <div class="comment-info">
+      <img src="{{#if comment.user.pets.[0]}}{{comment.user.pets.[0].image}}{{else}}/assets/profile_images/cat1.png{{/if}}" alt="">
+            <div class="card-body">
+              <p>{{body}}</p>
+            </div>
+    </div>
+          <div class="card-body">
+            Comment by
+            {{user.user_name}}
+            on
+            {{format_date this.createdAt}}
+          </div>
+          {{#if deletable}}
+            <button class="deleteCommentBtn" data-comment_id="{{id}}">Delete
+              Comment</button>
+          {{/if}}
+        </div>
+      {{/each}}
+    {{else}}
+      <p class="">No comments on this post.</p>
+    {{/if}}
+  </div>
+</div>
+<script src="/js/viewpost.js"></script>

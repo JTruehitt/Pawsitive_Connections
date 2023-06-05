@@ -19,7 +19,7 @@ async function handleNewPet(e) {
   console.log(newPetInfo);
 
   try {
-    const response = await fetch("/api/pets/", {
+    const response = await fetch("/api/pets", {
       method: "POST",
       body: JSON.stringify(newPetInfo),
       headers: { "Content-Type": "application/json" },
@@ -29,8 +29,8 @@ async function handleNewPet(e) {
       throw new Error("Failed to submit form");
     }
 
-    const data = await response.json();
-    console.log(data);
+    alert("Pet added successfully. Yay!");
+    location.assign('/dashboard')
   } catch (error) {
     console.error(error);
   }

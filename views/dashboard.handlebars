@@ -1,31 +1,61 @@
- <div class="row">
-      <div class="left-column">
-        <div class="card">
-          <img class="profile-pic" src="../dashboard/temp_img.jpg" />
-          <h3>Users name</h3>
-          <ul>
-            <li>Looking for a loving cat!</li>
-            <li>I have a dog who is friendly with both cats and dogs.</li>
-            <li>We love to hang out and go for walks at blanchard</li>
-          </ul>
-          <img class="pet-friends" src="../dashboard/pet-1.avif" />
-          <img class="pet-friends" src="../dashboard/pet-2.avif" />
-          <img class="pet-friends" src="../dashboard/pet-3.avif" />
-          <img class="pet-friends" src="../dashboard/pet-4.avif" />
+ <main>
+   <div class="row">
+        <div class="left-column">
+          <div class="card">
+            <img class="profile-pic" src="{{#if user.pets}}{{user.pets.[0].image}}{{else}}./assets/profile_images/cat1.png{{/if}}" />
+            <h3>{{user.user_name}}</h3>
+            <ul>
+              <li>Looking for a loving cat!</li>
+              <li>I have a dog who is friendly with both cats and dogs.</li>
+              <li>We love to hang out and go for walks at blanchard</li>
+            </ul>
+            <img class="pet-friends" src="./assets/pet-1.avif" />
+            <img class="pet-friends" src="./assets/pet-2.avif" />
+            <img class="pet-friends" src="./assets/pet-3.avif" />
+            <img class="pet-friends" src="./assets/pet-4.avif" />
+          </div>
+        </div>
+        <div class="right-column">
+          <div class="card make-post">
+            <h2>Make a new post!</h2>
+            <div class="post-inputs">
+              <input
+                type="text"
+                id="new-user-post-title"
+                placeholder="Post Title"
+              />
+              <textarea name="body" id="new-user-post-body" placeholder="What's on your mind?" cols="30" rows="10"></textarea>
+              <button class="btn" id="post-btn">Post</button>
+            </div>
+          </div>
+          <div class="card posts-container">
+            <h3>Popular Posts</h3>
+            {{#each posts as |post|}}
+            <div class="card post-card" data-id="{{post.id}}">
+              <div class="post-info">
+                <img class="profile-pic" src="{{#if post.user.pets.[0]}}{{post.user.pets.[0].image}}{{else}}./assets/profile_images/cat1.png{{/if}}" />
+                <div class="post-card-contents">
+                  <p class="post-title">{{post.title}}</p>
+                  <p class="post-body">{{post.body}}</p>
+                </div>
+              </div>
+            
+              <p class="post-subtext">by {{post.user.user_name}} on {{format_date post.createdAt}}</p>
+              {{#if post.comments}}
+              {{#each post.comments as |comment|}}
+              <div class="comment-card">
+                <div class="comment-info">
+                  <img class="profile-pic" src="{{#if comment.user.pets}}{{comment.user.pets.[0].image}}{{else}}./assets/profile_images/cat1.png{{/if}}" />
+                  <p class="comment-body">{{comment.body}}</p>
+                </div>
+                <p class="comment-subtext">by {{comment.user.user_name}} on {{format_date comment.createdAt}}</p>
+              </div>
+              {{/each}}
+              {{/if}}
+            </div>
+            {{/each}}
+          </div>
         </div>
       </div>
-      <div class="right-column">
-        <div class="card make-post">
-          <h2>Make a new post!</h2>
-          <input
-            type="text"
-            id="new-user-post"
-            placeholder="What's on your mind?"
-          />
-          <button class="btn" id="post-btn">Post</button>
-        </div>
-        <div class="card">
-          <h3>Popular Posts</h3>
-        </div>
-      </div>
-    </div>
+ </main>
+ <script src="./js/dashboard.js"></script>
