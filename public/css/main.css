@@ -1,40 +1,123 @@
-body {
-  background-color: rgb(60, 131, 181);
-  color: white;
-  font-family: "Love Ya Like A Sister", cursive;
-}
-
-.profile_img {
-  width: clamp(50px, 10vw, 75px);
-  height: clamp(50px, 10vw, 75px);
-}
-
-.avatar_container {
-  display: flex;
-  flex-wrap: wrap;
-  padding-block: 1em;
-  gap: 0.5rem;
-  justify-content: center;
-}
-
-.form_container {
-  margin: 0 auto;
-  max-width: 80%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#petForm {
-  max-inline-size: 400px;
-  padding-inline: 4em;
-  padding-block: 2em;
-  border: 2px solid yellow;
-}
-
-#petForm > * {
+/* Start Global Rules */
+* {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'love ya like a sister';
+    background-color: #B8E7E1;
+  }
+  .container {
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #B8E7E1;
+  }
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+  /* Small */
+  @media (min-width: 768px) {
+    .container {
+      width: 750px;
+    }
+  }
+  /* Medium */
+  @media (min-width: 992px) {
+    .container {
+      width: 900px;
+    }
+  }
+  /* Large */
+  @media (min-width: 1152px) {
+    .container {
+      width: 1000px;
+    }
+  }
+  /* End Global Rules */
+  
+  /* Top of the Page */
+  .landing-page header {
+    min-height: 50px;
+    display: center;
+  }
+  @media (max-width: 767px) {
+    .landing-page .header {
+      min-height: auto;
+      display: initial;
+    }
+  }
+  .landing-page header .container {
     display: flex;
-    flex-direction: column;
-    margin-block-end: .5em;
-}
+    align-items: center;
+    justify-content: space-between;
+  }
+  @media (max-width: 767px) {
+    .landing-page header .container {
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
 
+
+  @media (max-width: 767px) {}
+
+   .landing-page .content .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 140px;
+    min-height: calc(100vh - 80px);
+  }
+  @media (max-width: 767px) {
+    .landing-page .content .container {
+      gap: 0;
+      min-height: calc(100vh - 101px);
+      justify-content: center;
+      flex-direction: column-reverse;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .landing-page .content .info {
+      text-align: center;
+      margin-bottom: 15px 
+    }
+  }
+  .landing-page .content .info h2 {
+    color: rgb(9, 9, 9);
+    font-size: 34px;
+    text-align: center;
+  }
+  .landing-page .content .info h3 {
+    color: black;
+    font-size: 20px;
+    text-align: center;
+
+  }
+  .landing-page .content .info p {
+    margin: 10px;
+    line-height: 1.6;
+    text-align: center;
+    font-size: 15px;
+    color: #2a2a2a;
+  }
+  .btn {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    border: none;
+    border-radius: 20px;
+    padding: 5px 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    color: #FFF;
+    background-color: #6c63ff;
+  }
+ 
+  
+  

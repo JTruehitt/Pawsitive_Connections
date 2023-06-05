@@ -1,61 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Landing Page</title>
-  
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="public/css/main.css">   
-</head>
-<body>
-    <main>
-      <div class="container">
-       <h1> Pawsitive Connections</h1>  
-       <p> Welcome to "Pawsitive Connections" 🐾 A community where furry friends come together to wag, purr, and pounce their way into your heart. Whether you're a proud pawrent, a whisker enthusiast, or simply someone who can't resist the charm of a wet nose, this is the ultimate destination for all pet lovers to fetch a ton of fun and share tails of joy. Unleash your creativity, scratch that social itch, and join our pawsome pack as we embark on a fur-tastic adventure, where every pet is a superstar. Let's put our best paw forward and make this place the cat's pajamas! 🐶😺  </p> 
-  <!-- Content here -->
-</div>
-<aside class="right">
-  <img src="./public/css/cat looking at dog.jpg" width="160px" />
-  <ul>
-    <li><a class="active" href="#home">Home</a></li>
-    <li><a href="#Breed">Breed</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#about">About</a></li>
-  </ul>
-  <br><br>
-  <p>"Who needs a nine-to-five job when you can just nap all day and get belly rubs as bonuses? #PetGoals"<br>-Mr.Pickles🐶 and Misty😺 </p>
-</aside>
- <div class="form-input">
-          <input type="text" name="last-name" id="last-name" placeholder="Last Name" required>
-          <span></span>
-          <p class="warning">Last name cannot be empty</p>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="public/css/main.css" />
+  </head>
+  <body>
+    <div class="landing-page">
+      <header>
+        <div class="container">
+          <div class="headerBar">
+            <img
+              src="./public/assets/pawsitive connections Logo.png"
+              width="200px"
+              height="200px"
+              alt="cat and dog talking"
+            />
+          </div>
+
+          <ul class="nav">
+            <li><a href="/home">Home</a></li>
+            <li><a href="/aboutus">About Us</a></li>
+            <li><a href="/whiskerplace">Whiskerplace</a></li>
+            <li><a href="/Sign Up">Sign-Up</a></li>
+          </ul>
         </div>
-
-        <div class="form-input">
-          <input type="email" name="email" id="email" placeholder="Email Address" required>
-          <span></span>
-          <p class="warning">Not a valid email!</p>
+      </header>
+      <div class="content">
+        <div class="container">
+          <div class="info">
+            <h2>Welcome to Pawsitive Connections</h2>
+            <p>
+              A community where furry friends come together to wag, purr, and
+              pounce their way into your heart.
+            </p>
+            
+          
+          <div>
+            <a href=button class= "btn info text-center">Login</a>
+          </div>
         </div>
-
-        <div class="form-input">
-          <input type="Password" name="Password" id="Password" placeholder="Password" required>
-          <span></span>
-          <p class="warning">Password cannot be empty</p>
+          <div class="picture">
+            <img
+              src="./public/assets/dynamic duo.jpg"
+              width="100%"
+              height="80%"
+              alt="cat and dog talking"
+            />
+          </div>
         </div>
+      </div>
+    </div>
 
-        <input class="submit-btn" type="submit" value="login">
-        <p class="form-term">By clicking the button, you are agreeing to our <span>Terms and Services</span> </p>
-      </form>
-    </section>
-    </main>
-    
-    {{{ body }}}
+    <!-- {{{ body }}} -->
 
-<script src="/js/main.js"></script>
-</body>
+    <script src="/js/main.js"></script>
+  </body>
 </html>
