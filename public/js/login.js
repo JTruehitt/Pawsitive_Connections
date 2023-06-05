@@ -46,7 +46,7 @@ signupBtn.addEventListener("click", (e) => {
     headers: { "Content-Type": "application/json" },
   }).then((data) => {
     if (data.ok) {
-      location.assign("/dashboard");
+      location.assign("/pets/add-pet");
     } else
       alert(
         "Error creating an account with the information provided. Please check your input and try again."

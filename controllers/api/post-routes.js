@@ -6,6 +6,7 @@ const { Post } = require("../../models");
 // @access private
 router.post("/", async (req, res) => {
   try {
+    console.log(req.body)
     const userInfo = {
       title: req.body.title,
       body: req.body.body,

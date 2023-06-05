@@ -47,7 +47,7 @@ Pet.init(
     },
     image: {
       type: DataTypes.STRING,
-      defaultValue: `https://onewoofdaycare.com/wp-content/uploads/2020/04/happiest-dog-breeds-600x0-c-default.png`,
+      defaultValue: `/assets/profile_images/cat1.png`,
     },
     user_id: {
       type: DataTypes.INTEGER,
