@@ -150,4 +150,6 @@ a {
   width: 150%;
   height: 200%;
 }
-/* End About Us Page */
+.text-center {
+  text-align: center;
+}
