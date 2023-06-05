@@ -31,7 +31,7 @@ Pet.init(
       allowNull: true,
     },
     gender: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.STRING,
       allowNull: true,
     },
     description: {

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // (console.log("Successfully linked."))()
 
 // const navBar = document.querySelector('.headerBar');
@@ -22,3 +23,5 @@
 //     document.getElementById('error-message').innerHTML = 'Whoopsie!! You are barking up the wrong tree.';
 //   }
 // };
+=======
+>>>>>>> 9c42ac7e7cb3ddc27e9143a3219cf7092b17f3cd

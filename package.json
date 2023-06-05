@@ -28,6 +28,7 @@
     "express-session": "^1.17.3",
     "install": "^0.13.0",
     "mysql2": "^3.3.2",
+    "nodemailer": "^6.9.3",
     "sequelize": "^6.31.1"
   },
   "devDependencies": {

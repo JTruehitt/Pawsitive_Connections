@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { User } = require("../../models");
+const sendEmail = require("../../utils/mailer");
 
 // @desc new user sign up
 // route POST api/user/signup
@@ -17,11 +18,14 @@ router.post("/signup", async (req, res) => {
     const newUser = userInfo.get({ plain: true });
 
     req.session.save(() => {
-      (req.session.loggedIn = true), (req.session.user_id = newUser.id);
-      req.session.user_name = newUser.user_name;
+      (req.session.loggedIn = true),
+        (req.session.user_id = newUser.id),
+        (req.session.user_name = newUser.user_name);
 
-      req.status(200).json(newUser);
+      res.status(200).json(newUser);
     });
+
+    sendEmail(userInfo.email);
   } catch (err) {
     console.log(err);
     res
@@ -40,17 +44,19 @@ router.post("/login", async (req, res) => {
     });
 
     if (!userData) {
-      req.status(404).json({
+      res.status(404).json({
         message: `Issue with username or password. Please correct your entry and try again.`,
       });
+      return;
     }
 
-    const passwordCheck = await userData.checkPassword(req.body.password);
-
+    const passwordCheck = userData.checkPassword(req.body.password);
+    console.log(passwordCheck);
     if (!passwordCheck) {
-      res.status(400).json({
+      res.status(401).json({
         message: `Issue with username or password. Please correct your entry and try again.`,
       });
+      return;
     }
 
     const user = userData.get({ plain: true });
