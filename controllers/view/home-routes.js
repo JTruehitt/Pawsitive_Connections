@@ -40,7 +40,7 @@ router.get("/login", async (req, res) => {
       res.redirect("/dashboard");
       return;
     }
-    res.status(200).render("login");
+    res.status(200).render("login", { layout: "login-layout" });
   } catch (err) {
     console.log(err);
     res
@@ -55,8 +55,38 @@ router.get("/login", async (req, res) => {
 router.get("/dashboard", async (req, res) => {
   try {
     const postData = await Post.findAll({
-      where: { user_id: req.session.user_id },
+      include: [
+        {
+          model: User,
+          attributes: ["user_name"],
+          include: [
+            {
+              model: Pet,
+              attributes: ["name", "image"],
+            },
+          ],
+        },
+        {
+          model: Comment,
+          include: [
+            {
+              model: User,
+              attributes: ["user_name"],
+              include: [
+                {
+                  model: Pet,
+                  attributes: ["name", "image"],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+      order: [["createdAt", "DESC"]],
     });
+
+    const userData = await User.findByPk(req.session.user_id, { include: Pet });
+    const user = userData.get({ plain: true });
 
     if (!postData) {
       res.status(404).json({ message: `You haven't made any posts yet!` });
@@ -67,9 +97,12 @@ router.get("/dashboard", async (req, res) => {
       return post.get({ plain: true });
     });
 
-    res
-      .status(200)
-      .render("dashboard", { posts, loggedIn: req.session.loggedIn });
+    res.status(200).render("dashboard", {
+      layout: "dashboard-layout",
+      posts,
+      user,
+      loggedIn: req.session.loggedIn,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: `Error pulling user posts from db.` });
@@ -81,7 +114,25 @@ router.get("/dashboard", async (req, res) => {
 // @access private
 router.get("/community-post/:id", async (req, res) => {
   try {
-    const postData = await Post.findByPk(req.params.id);
+    const postData = await Post.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ["user_name"],
+          include: { model: Pet, attributes: ["name", "image"] },
+        },
+        {
+          model: Comment,
+          include: [
+            {
+              model: User,
+              attributes: ["user_name"],
+              include: { model: Pet, attributes: ["name", "image"] },
+            },
+          ],
+        },
+      ],
+    });
 
     if (!postData) {
       res.status(404).render("404");
@@ -90,9 +141,10 @@ router.get("/community-post/:id", async (req, res) => {
 
     const post = postData.get({ plain: true });
 
-    const usersPost = post.user_id === req.session.user_id ? true : false;
-
-    res.status(200).render("viewcommunitypost", {
+    const usersPost = post.user_id === req.session.user_id;
+    
+    res.status(200).render("view-community-post", {
+      layout: "dashboard-layout",
       post,
       loggedIn: req.session.loggedIn,
       usersPost,

@@ -7,6 +7,9 @@ body {
   font-family: "Love Ya Like A Sister", cursive;
   padding: 20px;
   background: #b8e7e1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .profile-pic {
   height: 30%;
@@ -50,10 +53,10 @@ input {
   height: 35px;
   text-align: center;
 }
-input:focus {
+/* input:focus {
   width: 500px;
   height: 50px;
-}
+} */
 .btn {
   border-radius: 4px;
   height: 35px;
@@ -81,6 +84,80 @@ input:focus {
   background-color: #73777b;
   color: #ec994b;
   box-shadow: 0 8px 24px 0 rgba(255, 255, 255, 0.2);
+}
+
+.post-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: stretch;
+}
+
+.post-inputs > * {
+  font-family: inherit;
+  text-align: center;
+}
+
+.post-card {
+  border: 3px solid rgb(48, 132, 170);
+  border-radius: 15px;
+  box-shadow: 10px 10px 20px rgba(255, 255, 255, 0.2);
+  max-inline-size: 70ch;
+}
+
+.post-card:hover {
+  cursor: pointer;
+}
+
+.post-title {
+  font-size: 140%;
+}
+
+p {
+  max-inline-size: 60ch;
+}
+
+main {
+  max-inline-size: 1200px;
+}
+
+.posts-container,
+.make-post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.posts-container > * {
+  width: 100%;
+}
+
+.make-post > * {
+  width: 90%;
+  text-align: center;
+}
+
+.comment-card {
+  border: 2px solid rgb(69, 144, 34);
+  padding-inline: 1em;
+  margin-block-end: 1em;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.post-info,
+.comment-info {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 1em;
+  margin-block-end: 0.5em;
+}
+
+#comment-message {
+  width: 80%;
 }
 
 @media screen and (max-width: 800px) {

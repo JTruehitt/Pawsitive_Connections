@@ -3,14 +3,14 @@ const path = require("path");
 const PORT = process.env.PORT || 3006;
 const sequelize = require("./config/connection");
 const session = require("express-session");
-const helpers = require("./utils/auth");
+const helpers = require("./utils/helpers");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 const app = express();
 const router = require("./controllers/index");
 
 const exphbs = require("express-handlebars");
-const hbs = exphbs.create({});
+const hbs = exphbs.create({helpers});
 
 const sess = {
   secret: "Super secret pawsword",
