@@ -41,12 +41,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(router);
 
 app.use((req, res) => {
-  res.send("Replace me with 404 page.");
+  res.status('404').render('404',{ layout: '404errorpage' });
 });
-
-//! ---- Only added here to sync models to db while no routes are in use. delete once routes are made
-const { User, Post, Comment, Pet } = require("./models");
-const { Sequelize } = require("sequelize");
 
 (async () => {
   try {

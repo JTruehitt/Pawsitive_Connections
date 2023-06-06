@@ -18,7 +18,33 @@
   </head>
 
   <body>
+    <header>
+      <div class="header-container">
+        <div class="header-inner section-inner"><img
+            src="./assets/pawsitive connections Logo.png"
+            width="200px"
+            height="200px"
+            alt="cat and dog talking"
+          /></div>
+
+        <ul class="links">
+          <a  href="/">Home</a>
+          <a href="/aboutus">About Us</a>
+          {{!-- {{#if loggedIn}}
+          <a href="/dashboard">Dashboard</a>
+          <a href="#">Whiskerplace</a>
+           <a class="LogoutBtn" href="#" id="LogoutBtn">Logout</a>
+          {{else}}
+            <a class="LoginBtn" href="/login" id="loginBtn">Login</a>
+          {{/if}} --}}
+        </ul>
+      </div>
+    </header>
    {{{ body }}}
     
+    {{#if loggedIn}}
+      <script src="/js/main.js">
+      </script>
+    {{/if}}
   </body>
 </html>

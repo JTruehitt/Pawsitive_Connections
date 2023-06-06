@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { User, Post, Comment, Pet } = require("../../models");
+const withAuth = require('../../utils/auth');
 
 // @desc get homepage
 // route GET /
@@ -21,7 +22,7 @@ router.get("/", async (req, res) => {
       return post.get({ plain: true });
     });
 
-    res.status(200).render("home", { posts });
+    res.status(200).render("home", { posts, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json({
@@ -52,7 +53,7 @@ router.get("/login", async (req, res) => {
 // @desc get user dashboard
 // route GET /dashboard
 // @access private
-router.get("/dashboard", async (req, res) => {
+router.get("/dashboard", withAuth, async (req, res) => {
   try {
     const postData = await Post.findAll({
       include: [
@@ -80,6 +81,7 @@ router.get("/dashboard", async (req, res) => {
               ],
             },
           ],
+          order: [["createdAt", "DESC"]],
         },
       ],
       order: [["createdAt", "DESC"]],
@@ -112,7 +114,7 @@ router.get("/dashboard", async (req, res) => {
 // @desc get single post
 // route GET /community-post/:id
 // @access private
-router.get("/community-post/:id", async (req, res) => {
+router.get("/community-post/:id", withAuth, async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
       include: [
@@ -130,6 +132,7 @@ router.get("/community-post/:id", async (req, res) => {
               include: { model: Pet, attributes: ["name", "image"] },
             },
           ],
+          order: [["createdAt", "DESC"]]
         },
       ],
     });
@@ -161,7 +164,7 @@ router.get("/community-post/:id", async (req, res) => {
 // @desc get new post view
 // route GET /new-community-post
 // @access private
-router.get("/new-community-post", async (req, res) => {
+router.get("/new-community-post", withAuth, async (req, res) => {
   try {
     res
       .status(200)
@@ -177,7 +180,7 @@ router.get("/new-community-post", async (req, res) => {
 // @desc get edit post homepage
 // route GET /edit-community-post/:id
 // @access private, single user
-router.get("/edit-community-post/:id", async (req, res) => {
+router.get("/edit-community-post/:id", withAuth, async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id);
 
@@ -197,6 +200,19 @@ router.get("/edit-community-post/:id", async (req, res) => {
     console.log(err);
     res.status(500).json({
       message: `Error loading edit post form. Please try again later.`,
+    });
+  }
+});
+
+router.get("/aboutus", async (req, res) => {
+  try {
+    res
+      .status(200)
+      .render("aboutus", { loggedIn: req.session.loggedIn });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      message: `Error loading new post form. Please try again later.`,
     });
   }
 });

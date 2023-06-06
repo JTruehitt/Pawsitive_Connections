@@ -1,65 +1,48 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Pawsitive Connections</title>
-  
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/main.css">   
-</head>
-<body>
-    {{!-- <main>
-      <div class="container">
-        <div class="header-inner section-inner"><img src="./public/assets/pawsitive connections Logo.png" width="200px" height ="200px" alt="cat and dog talking"></div>
-        
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <div class="header-inner section-inner"><img
+            src="/assets/pawsitive connections Logo.png"
+            width="200px"
+            height="200px"
+            alt="cat and dog talking"
+          /></div>
+
         <ul class="links">
-           <a href="/home">Home</a>
-            <a href="/aboutus">About Us</a>
-            <a href="/whiskerplace">Whiskerplace</a>
-          {{#if logged_in}}
-          <button class="LoginBtn" id="loginBtn">Login</button>
+          <a href="/">Home</a>
+          <a href="/aboutus">About Us</a>
+          {{#if loggedIn}}
+            <a href="/dashboard">Dashboard</a>
+            <a href="#">Whiskerplace</a>
+            <a class="LogoutBtn" href="#" id="LogoutBtn">Logout</a>
           {{else}}
+            <a class="LoginBtn" href="/login" id="loginBtn">Login</a>
+          {{/if}}
         </ul>
       </div>
     </header>
-    <div class="content">
-      <div class="container">
-        <div class="info">
-          <h2>Welcome to Pawsitive Connections</h2>
-          <p>A community where furry friends come together to wag, purr, and pounce their way into your heart.</p>
-        
-            {{#if logged_in}}
-          <button class= "LogoutBtn" id="logout">Login</button>
-          {{else}}
-          <button class= "loginBtn" id="login">Login</button>
-          {{/if}}
-        </div>
-        <div class="logo">
-          <img src="./public/assets/dynamic duo.jpg" width="100%" height ="100%" alt="cat and dog talking">
-        </div>
 
-        <div class="form-input">
-          <input type="Password" name="Password" id="Password" placeholder="Password" required>
-          <span></span>
-          <p class="warning">Password cannot be empty</p>
-        </div>
+    {{{body}}}
 
-        <input class="submit-btn" type="submit" value="login">
-        <p class="form-term">By clicking the button, you are agreeing to our <span>Terms and Services</span> </p>
-      </form>
-    </section>
-    </main> --}}
-    
-    {{{ body }}}
-
-{{#if logged_in}}
-<script src="/js/main.js">
-</script>
-{{/if}}
-</body>
+    {{#if loggedIn}}
+      <script src="/js/main.js">
+      </script>
+    {{/if}}
+  </body>
 </html>
