@@ -1,10 +1,11 @@
 const router = require("express").Router();
 const { Pet, User } = require("../../models");
+const withAuth = require('../../utils/auth');
 
 // @desc get view of one pet with id of :id
 // route GET /pets/view/:id
 // @access public
-router.get("/view/:id", async (req, res) => {
+router.get("/view/:id", withAuth, async (req, res) => {
   try {
     const petData = await Pet.findByPk(req.params.id);
 
@@ -33,7 +34,7 @@ router.get("/view/:id", async (req, res) => {
 // @desc get view all pets of user with id of :id
 // route GET /pets/view-all/:id
 // @access public
-router.get("/view-all/:id", async (req, res) => {
+router.get("/view-all/:id", withAuth, async (req, res) => {
   try {
     const petData = await Pet.findAll({ where: { user_id: req.params.id } });
 
@@ -60,7 +61,7 @@ router.get("/view-all/:id", async (req, res) => {
 // @desc get add pet page
 // route GET /pets/add-pet
 // @access private
-router.get("/add-pet", async (req, res) => {
+router.get("/add-pet", withAuth, async (req, res) => {
   try {
     res.status(200).render("add-pet", { loggedIn: req.session.loggedIn });
   } catch (err) {
@@ -74,7 +75,7 @@ router.get("/add-pet", async (req, res) => {
 // @desc get edit pet page
 // route GET /pets/edit-pet
 // @access private
-router.get("/edit-pet/:id", async (req, res) => {
+router.get("/edit-pet/:id", withAuth, async (req, res) => {
   try {
     const petInfo = await Pet.findByPk(req.params.id);
     if (!petInfo) {

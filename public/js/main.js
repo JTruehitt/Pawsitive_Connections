@@ -1,4 +1,3 @@
-
 // (console.log("Successfully linked."))()
 
 // const navBar = document.querySelector('.headerBar');
@@ -19,8 +18,25 @@
 // window.onload = function() {
 //   var statusCode = window.location.search.split('=')[1];
 //   if (statusCode === '404') {
-  
+
 //     document.getElementById('error-message').innerHTML = 'Whoopsie!! You are barking up the wrong tree.';
 //   }
 // };
 
+const logoutBtn = document.getElementById("LogoutBtn");
+
+const handleLogout = async () => {
+  const res = await fetch(`/api/user/logout`, {
+    method: "POST",
+  });
+
+  if (res.ok) {
+    alert("Successfully logged out.");
+    location.assign("/");
+  } else {
+    alert("Error logging out, sorry!");
+    location.reload();
+  }
+};
+
+logoutBtn.addEventListener('click', handleLogout)
