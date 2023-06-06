@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { User, Post, Comment, Pet } = require("../../models");
-const withAuth = require('../../utils/auth');
+const withAuth = require("../../utils/auth");
 
 // @desc get homepage
 // route GET /
@@ -132,25 +132,27 @@ router.get("/community-post/:id", withAuth, async (req, res) => {
               include: { model: Pet, attributes: ["name", "image"] },
             },
           ],
-          order: [["createdAt", "DESC"]]
+          order: [["createdAt", "DESC"]],
         },
       ],
     });
 
     if (!postData) {
-      res.status(404).render("404");
+      res.status(404).render("404", { layout: "404errorpage" });
       return;
     }
 
     const post = postData.get({ plain: true });
 
-    const usersPost = post.user_id === req.session.user_id;
-    
+    post.deletable = post.user_id === req.session.user_id;
+    post.comments.forEach((comment) => {
+      comment.deletable = comment.user_id === req.session.user_id;
+    });
+
     res.status(200).render("view-community-post", {
       layout: "dashboard-layout",
       post,
       loggedIn: req.session.loggedIn,
-      usersPost,
     });
   } catch (err) {
     console.log(err);
@@ -195,7 +197,11 @@ router.get("/edit-community-post/:id", withAuth, async (req, res) => {
 
     res
       .status(200)
-      .render("editcommunitypost", { post, loggedIn: req.session.loggedIn });
+      .render("edit-community-post", {
+        layout: "dashboard-layout",
+        post,
+        loggedIn: req.session.loggedIn,
+      });
   } catch (err) {
     console.log(err);
     res.status(500).json({
@@ -206,9 +212,7 @@ router.get("/edit-community-post/:id", withAuth, async (req, res) => {
 
 router.get("/aboutus", async (req, res) => {
   try {
-    res
-      .status(200)
-      .render("aboutus", { loggedIn: req.session.loggedIn });
+    res.status(200).render("aboutus", { loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json({

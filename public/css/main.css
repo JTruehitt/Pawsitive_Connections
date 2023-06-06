@@ -132,6 +132,7 @@ body {
   margin-block: 0;
   margin-inline: 0;
   padding-inline: 0;
+  flex-wrap: wrap;
 }
 
 .links > * {
@@ -178,4 +179,21 @@ body {
 
 .mt-1em {
   margin-block-start: 1em;
+}
+
+.main-image {
+  width: 100%;
+  height: auto;
+  margin-bottom: 2em;
+}
+
+.p-measure {
+  max-inline-size: 60ch;
+  text-align: center;
+}
+
+.aboutus_info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

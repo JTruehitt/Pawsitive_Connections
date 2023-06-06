@@ -33,7 +33,7 @@
             {{#each posts as |post|}}
             <div class="card post-card" data-id="{{post.id}}">
               <div class="post-info">
-                <img class="profile-pic" src="{{#if post.user.pets.[0]}}{{post.user.pets.[0].image}}{{else}}./assets/profile_images/cat1.png{{/if}}" />
+                <img class="profile_img" src="{{#if post.user.pets.[0]}}{{post.user.pets.[0].image}}{{else}}./assets/profile_images/cat1.png{{/if}}" />
                 <div class="post-card-contents">
                   <p class="post-title">{{post.title}}</p>
                   <p class="post-body">{{post.body}}</p>
@@ -45,7 +45,7 @@
               {{#each post.comments as |comment|}}
               <div class="comment-card">
                 <div class="comment-info">
-                  <img class="profile-pic" src="{{#if comment.user.pets}}{{comment.user.pets.[0].image}}{{else}}./assets/profile_images/cat1.png{{/if}}" />
+                  <img class="profile_img" src="{{#if comment.user.pets}}{{comment.user.pets.[0].image}}{{else}}./assets/profile_images/cat1.png{{/if}}" />
                   <p class="comment-body">{{comment.body}}</p>
                 </div>
                 <p class="comment-subtext">by {{comment.user.user_name}} on {{format_date comment.createdAt}}</p>
