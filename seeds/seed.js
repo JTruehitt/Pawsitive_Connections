@@ -1,5 +1,5 @@
 const sequelize = require('../config/connection')
-const { User, Comment, Post, Pet } = require("../models");
+const { User, Comment, Post, Pet, Lot, Bid } = require("../models");
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
@@ -204,6 +204,78 @@ const seedDatabase = async () => {
       user_id: 5,
     },
   ]);
+
+  await Lot.bulkCreate([
+    {
+      type: "Accessories",
+      image: "/assets/profile_images/marketplace_grooming.png",
+      title: "Dog Collar",
+      askingPrice: 10,
+      body: "Stylish and durable dog collar suitable for small to medium-sized dogs.",
+      user_id: 1
+    },
+    {
+      type: "Grooming",
+      image: "/assets/profile_images/marketplace_grooming.png",
+      title: "Pet Shampoo",
+      askingPrice: 15,
+      body: "High-quality pet shampoo for a thorough and gentle clean.",
+      user_id: 2
+    },
+    {
+      type: "Food",
+      image: "/assets/profile_images/marketplace_grooming.png",
+      title: "Cat Treats",
+      askingPrice: 8,
+      body: "Delicious and nutritious treats for your feline friend.",
+      user_id: 1
+    },
+    {
+      type: "Health / Wellness",
+      image: "/assets/profile_images/marketplace_grooming.png",
+      title: "Joint Supplement",
+      askingPrice: 20,
+      body: "Support your pet's joint health with this premium supplement.",
+      user_id: 3
+    },
+    {
+      type: "Miscellaneous",
+      image: "/assets/profile_images/marketplace_grooming.png",
+      title: "Pet Bed",
+      askingPrice: 30,
+      body: "Cozy and comfortable pet bed for a restful sleep.",
+      user_id: 2
+    },
+  
+  ]);
+
+  await Bid.bulkCreate([
+    {
+      bidAmount: 12,
+      user_id: 1,
+      lot_id: 1
+    },
+    {
+      bidAmount: 18,
+      user_id: 2,
+      lot_id: 1
+    },
+    {
+      bidAmount: 9,
+      user_id: 3,
+      lot_id: 2
+    },
+    {
+      bidAmount: 25,
+      user_id: 1,
+      lot_id: 3
+    },
+    {
+      bidAmount: 14,
+      user_id: 2,
+      lot_id: 3
+    },
+  ])
 
   console.log("Seed data created successfully!");
 };

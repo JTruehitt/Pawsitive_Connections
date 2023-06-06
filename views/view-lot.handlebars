@@ -1,0 +1,94 @@
+<div class="view-post-wrapper">
+  <div class="card post-card">
+    <div class="card-header post-header">
+      <h3 class="text-center">{{lot.title}}</h5>
+  
+    </div>
+    <div class="post-info">
+      <img class="profile_img" src="{{lot.image}}" alt="">
+  
+      <div class="card-body">
+        <p>Asking: {{lot.askingPrice}}</p>
+        <p class="date-text">Posted by
+          {{lot.user.user_name}}
+          on
+          {{format_date lot.createdAt}}</p>
+        <p class="card-text">{{lot.body}}</p>
+        {{!-- <p>Highest Bid: {{#if lot.bids}}{{lot.bids.[0].bidAmount}} by {{lot.user.user_name}}{{else}}None{{/if}}</p> --}}
+        <p>Highest Bid: {{#if lot.bids}}{{display_highest lot.bids}}{{else}}None{{/if}}</p>
+      </div>
+    </div>
+    <div class="card-body">
+      <form class="form bid-submit">
+        <div class="input-group post-comment">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Place your bid"
+            id="bidAmount"
+          />
+          <button
+            class="bidSubmitBtn btn"
+            type="submit"
+            data-lotid="{{lot.id}}"
+          >Place Bid</button>
+  
+        </div>
+      </form>
+      <form class="form comment-submit">
+        <div class="input-group post-comment">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="What do you think?"
+            id="comment-message"
+          />
+          <button
+            class="commentSubmitBtn btn"
+            type="submit"
+            data-lotid="{{lot.id}}"
+          >Add Comment</button>
+  
+        </div>
+      </form>
+      {{#if lot.deletable}}
+      <div class="postBtnsContainer">
+        {{!-- <button class="editLotBtn btn" data-postid="{{lot.id}}">Edit Post</button> --}}
+            <button class="deleteLotBtn btn" data-lotid="{{lot.id}}">Delete Lot</button>
+      </div>
+          {{/if}}
+    </div>
+  </div>
+  <div class="comment-section">
+    <h3 class="text-center">Comments:</h3>
+    <div class="comment-container">
+      {{#if lot.comments}}
+        {{#each lot.comments as |comment|}}
+          <div class="card">
+      <div class="comment-info">
+        <img class="profile_img" src="{{#if comment.user.pets.[0]}}{{comment.user.pets.[0].image}}{{else}}/assets/profile_images/cat1.png{{/if}}" alt="">
+              <div class="card-body">
+                <p>{{body}}</p>
+              </div>
+      </div>
+            <div class="card-body">
+              Comment by
+              {{user.user_name}}
+              on
+              {{format_date this.createdAt}}
+            </div>
+            {{#if deletable}}
+            <div class="postBtnsContainer">
+              <button class="deleteCommentBtn btn" data-comment_id="{{id}}">Delete
+                Comment</button>
+                </div>
+            {{/if}}
+          </div>
+        {{/each}}
+      {{else}}
+        <p class="text-center filler-text">No comments on this post.</p>
+      {{/if}}
+    </div>
+  </div>
+</div>
+<script src="/js/view-lot.js"></script>

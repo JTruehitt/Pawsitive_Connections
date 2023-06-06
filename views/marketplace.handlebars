@@ -17,32 +17,36 @@
         </div>
         <div class="right-column">
           <div class="card make-post">
-            <h2>Make a new post!</h2>
-            <div class="post-inputs">
+            {{!-- <h2>Make a new post!</h2> --}}
+            {{!-- <div class="post-inputs">
               <input
                 type="text"
                 id="new-user-post-title"
                 placeholder="Post Title"
               />
-              <textarea name="body" id="new-user-post-body" placeholder="What's on your mind?" cols="30" rows="10"></textarea>
-              <button class="btn" id="post-btn">Post</button>
-            </div>
+              <textarea name="body" id="new-user-post-body" placeholder="What's on your mind?" cols="30" rows="10"></textarea> --}}
+              <a class="btn" href='/marketplace/new-lot' id="post-btn">Set up a new lot</a>
+            {{!-- </div> --}}
           </div>
           <div class="card posts-container">
-            <h3 class="text-center">Popular Posts</h3>
-            {{#each posts as |post|}}
-            <div class="card post-card" data-id="{{post.id}}">
+            <h3 class="text-center">Open Lots</h3>
+            {{#each lots as |lot|}}
+            <div class="card post-card" data-id="{{lot.id}}">
               <div class="post-info">
-                <img class="profile_img" src="{{#if post.user.pets.[0]}}{{post.user.pets.[0].image}}{{else}}./assets/profile_images/cat1.png{{/if}}" />
+                <img class="profile_img" src="{{lot.image}}" />
                 <div class="post-card-contents">
-                  <p class="post-title">{{post.title}}</p>
-                  <p class="post-body">{{post.body}}</p>
+      
+                  <p class="post-title">{{lot.title}}</p>
+                   <p>Asking Price: {{lot.askingPrice}}</p>
+                  {{!-- <p>Highest Bid: {{#if lot.bids}}{{lot.bids.[0].bidAmount}}{{else}}None{{/if}}</p> --}}
+                          <p>Highest Bid: {{#if lot.bids}}{{display_highest lot.bids}}{{else}}None{{/if}}</p>
+                  <p class="post-body">{{lot.body}}</p>
                 </div>
               </div>
             
-              <p class="post-subtext">by {{post.user.user_name}} on {{format_date post.createdAt}}</p>
-              {{#if post.comments}}
-              {{#each post.comments as |comment|}}
+              <p class="post-subtext">by {{lot.user.user_name}} on {{format_date lot.createdAt}}</p>
+              {{#if lot.comments}}
+              {{#each lot.comments as |comment|}}
               <div class="comment-card">
                 <div class="comment-info">
                   <img class="profile_img" src="{{#if comment.user.pets}}{{comment.user.pets.[0].image}}{{else}}./assets/profile_images/cat1.png{{/if}}" />
@@ -58,4 +62,4 @@
         </div>
       </div>
  </main>
- <script src="./js/dashboard.js"></script>
+ <script src="./js/marketplace.js"></script>

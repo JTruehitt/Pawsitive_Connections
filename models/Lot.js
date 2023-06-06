@@ -1,9 +1,9 @@
 const sequelize = require("../config/connection");
 const { Model, DataTypes } = require("sequelize");
 
-class Comment extends Model {}
+class Lot extends Model {}
 
-Comment.init(
+Lot.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,11 +11,34 @@ Comment.init(
       allowNull: false,
       autoIncrement: true,
     },
-    body: {
+    type: {
       type: DataTypes.STRING,
+      allowNull: false,
+    },
+    image: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
       validate: {
         notEmpty: true,
-        len: [4, 360],
+        len: [4, 32],
+      },
+    },
+    askingPrice: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        max: 9999,
+      },
+    },
+    body: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
       },
     },
     user_id: {
@@ -25,30 +48,14 @@ Comment.init(
         key: "id",
       },
     },
-    post_id: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: "post",
-        key: "id",
-      },
-    },
-    lot_id: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: "lot",
-        key: "id",
-      },
-    },
   },
   {
     sequelize,
-    timestamps: true,
     freezeTableName: true,
+    timestamps: true,
     underscored: true,
-    modelName: "comment",
+    modelName: "lot",
   }
 );
 
-module.exports = Comment;
+module.exports = Lot;

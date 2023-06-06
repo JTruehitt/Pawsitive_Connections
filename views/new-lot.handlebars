@@ -1,0 +1,32 @@
+
+  <div class="card col-md-10 editPost-container">
+
+    <form class="form newLot-form" data-postid="">
+  <h2 class="card-title text-center">One pet's trash...</h2>
+
+  <label for="lotType">Type:</label>
+  <select class="text-center" name="type" id="lotType">
+    <option value="Accessories-/assets/profile_images/marketplace_accessories.png">Accessories</option>
+    <option value="Food-/assets/profile_images/marketplace_food.png">Food</option>
+    <option value="Grooming-/assets/profile_images/marketplace_grooming.png">Grooming</option>
+    <option value="Health / Wellness-/assets/profile_images/marketplace_medical.png">Health / Wellness</option>
+    <option value="Miscellaneous-/assets/profile_images/marketplace_other.png">Miscellaneous</option>
+  </select>
+
+  <label for="lot_title">Title:</label>
+  <input class="form-input form-control" type="text" id="lot_title" value="" />
+
+  <label for="askingPrice">Asking Price:</label>
+  <input type="number" id="askingPrice" max="9999" />
+
+  <label for="lot_body">Description:</label>
+  <textarea class="form-input text-center form-control" id="lot_body"></textarea>
+
+  <button class="submitLotBtn btn" type="submit">Post your item.</button>
+</form>
+
+    </div>
+
+  {{#if loggedIn}}
+  <script src="/js/addlot.js"></script>
+  {{/if}}

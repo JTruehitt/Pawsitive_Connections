@@ -58,6 +58,28 @@ router.put("/:id", async (req, res) => {
   }
 });
 
+// @desc delete lot comment
+// route DELETE api/comment/marketplace/:id
+// @access private
+router.delete("/marketplace/:id", async (req, res) => {
+  try {
+    const comment = await Comment.findByPk(req.params.id);
+
+    if (!comment) {
+      res
+        .status(400)
+        .json({ message: `No comment with id ${req.params.id} was found.` });
+      return;
+    }
+
+    await comment.destroy();
+
+    res.status(200).json({ message: `Comment successfully deleted.` });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: `Error deleting comment on db.`, err });
+  }
+});
 // @desc delete comment
 // route DELETE api/comment/:id
 // @access private
@@ -78,6 +100,38 @@ router.delete("/:id", async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: `Error deleting comment on db.`, err });
+  }
+});
+
+// MARKETPLACE
+// @desc new comment on lot
+// route POST api/comment/marketplace
+// @access private
+router.post("/marketplace", async (req, res) => {
+  try {
+    const userInfo = {
+      body: req.body.body,
+      user_id: req.session.user_id,
+      lot_id: req.body.lot_id,
+    };
+
+    const newComment = await Comment.create(userInfo);
+
+    if (!newComment) {
+      res.status(400).json({
+        message: `Error posting comment with info provided. Please try again soon.`,
+      });
+      return;
+    }
+
+    res
+      .status(200)
+      .json({ message: `New comment successfully posted.`, newComment });
+  } catch (err) {
+    console.log(err);
+    res
+      .status(500)
+      .json({ message: `Error adding post to the database.`, err });
   }
 });
 
