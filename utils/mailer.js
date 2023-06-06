@@ -10,8 +10,8 @@ const welcomeEmail = `
   </style>
 </head>
 <body>
-  <h1>Welcome to Pawsitive Connections!</h1>
-  <img this is a placeholder for logo src= http://via.placeholder.com/640x360 >
+  <h1>Welcome!!</h1>
+  <img src= https://pawsitiveconnections.s3.us-east-2.amazonaws.com/pawsitive%20connections%20Logo.png>
   <p>Thank you for signing up for Pawsitive Connections! We are thrilled to have you as a member of our community.</p>
   <p>At Pawsitive Connections, we are dedicated to promoting the well-being and happiness of pets and their owners. We provide a platform for pet lovers to connect, share experiences, and support each other.</p>
   <p>Feel free to explore our website and start connecting with fellow pet enthusiasts. If you have any questions or need assistance, don't hesitate to reach out to our support team.</p>
