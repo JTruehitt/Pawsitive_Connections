@@ -1,9 +1,9 @@
 const sequelize = require("../config/connection");
 const { Model, DataTypes } = require("sequelize");
 
-class Comment extends Model {}
+class Bid extends Model {}
 
-Comment.init(
+Bid.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,11 +11,11 @@ Comment.init(
       allowNull: false,
       autoIncrement: true,
     },
-    body: {
-      type: DataTypes.STRING,
+    bidAmount: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
       validate: {
-        notEmpty: true,
-        len: [4, 360],
+        max: 9999,
       },
     },
     user_id: {
@@ -25,30 +25,21 @@ Comment.init(
         key: "id",
       },
     },
-    post_id: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: "post",
-        key: "id",
-      },
-    },
     lot_id: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: "lot",
-        key: "id",
+        type: DataTypes.INTEGER,
+        references: {
+          model: "lot",
+          key: "id",
+        },
       },
-    },
   },
   {
     sequelize,
-    timestamps: true,
     freezeTableName: true,
+    timestamps: true,
     underscored: true,
-    modelName: "comment",
+    modelName: "bid",
   }
 );
 
-module.exports = Comment;
+module.exports = Bid;

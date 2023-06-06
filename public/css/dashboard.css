@@ -12,16 +12,18 @@ body {
   align-items: center;
 }
 .profile-pic {
-  height: 30%;
-  width: 30%;
+  height: 50%;
+  width: 50%;
   border-radius: 50%;
-  padding-top: 45px;
-  padding-bottom: 25px;
+  padding-block: 1em;
 }
 li {
   list-style-type: none;
   padding-top: 5px;
   padding-bottom: 5px;
+}
+ul {
+  padding-inline: 0;
 }
 ul li::before {
   content: "🐾          ";
@@ -48,6 +50,7 @@ ul li::before {
   background-color: white;
   padding: 20px;
   margin-top: 20px;
+  width: 100%;
 }
 input {
   height: 35px;
@@ -141,6 +144,8 @@ main {
   border: 2px solid rgb(69, 144, 34);
   padding-inline: 1em;
   margin-block-end: 1em;
+  border-radius: 15px;
+  padding-block-start: 1em;
 }
 
 .text-center {
@@ -156,8 +161,10 @@ main {
   margin-block-end: 0.5em;
 }
 
-#comment-message {
+#comment-message,
+#bidAmount {
   width: 80%;
+  margin-bottom: .5em;
 }
 
 .header-container,
@@ -173,11 +180,69 @@ main {
   margin-block: 0;
   margin-inline: 0;
   padding-inline: 0;
+  flex-wrap: wrap;
 }
 
 .links > * {
   font-size: 1.25rem;
 }
+
+.comment-container > *,
+.comment-section {
+  width: 100%;
+}
+
+.comment-container,
+.view-post-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* max-inline-size: 80ch; */
+}
+
+.profile_img {
+  width: clamp(50px, 15vw, 150px);
+  height: clamp(50px, 15vw, 150px);
+}
+
+.post-comment {
+  display: flex;
+} 
+
+.postBtnsContainer {
+  display: flex;
+  justify-content: space-evenly;
+  margin-block-start: 1em;
+}
+
+.filler-text {
+  margin-right: 0;
+  padding-inline: 0;
+}
+
+.editPost-form,
+.newLot-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  max-inline-size: 80ch;
+}
+
+.editPost-form > *,
+.newLot-form > * {
+width: 100%;
+font-family: "Love Ya Like A Sister", cursive;
+}
+
+
+.editPost-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  max-inline-size: 80ch;
+}
+
 @media screen and (max-width: 800px) {
   .left-column,
   .right-column {

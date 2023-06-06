@@ -1,0 +1,21 @@
+
+  <div class="card col-md-10 editPost-container">
+
+    <form class="form editPost-form" data-postid="{{post.id}}">
+      <h2 class="card-title text-center">What's new?</h2>
+      
+        <input class="form-input form-control" type="text" id="post_title" value="{{post.title}}"/>
+      
+      
+        <textarea class="form-input form-control" type="password" id="post_body" />{{post.body}}</textarea>
+        
+      
+      
+        <button class="submitEditedPostBtn btn" type="submit">Post your update.</button>
+     
+    </form>
+    </div>
+
+  {{#if loggedIn}}
+  <script src="/js/editpost.js"></script>
+  {{/if}}
