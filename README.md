@@ -4,7 +4,10 @@
 
 ## Project Description
 
-Pawsitive Connections is a project that allows you to connect with your pet community. In this application, a user will create a profile based on their pet. Once logged in the user will be able to create posts, view posts made by others, and even comment back and forth.
+Pawsitive Connections is a project that allows you to connect with your pet community. In this application, a user will create a profile based on their pet. Once logged in the user will be able to create posts, view posts made by others, and even comment back and forth. This application utilized MySql, Express.js, Node.js, Heroku, Nodemailer, Sequelize, Bcrypt, dotenv, Express-Handlers and Express-Session.
+
+## Link to Deployed App
+https://stark-harbor-37192.herokuapp.com/ 
 
 ## Table of Contents
 
